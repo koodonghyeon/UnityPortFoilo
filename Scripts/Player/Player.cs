@@ -67,8 +67,7 @@ public class Player : cCharacter
     [HideInInspector]
     //버프
     public Animator _Buff;
-    //현제 장착중인무기
-    private cWeaPon _WeaPon;
+
 
     [HideInInspector]
     //크리티컬확률
@@ -101,9 +100,9 @@ public class Player : cCharacter
             _MoveSpeed = 5.0f;
             _Critical = 20;
             _CriticalDamage = 50;
-            _JumpPower = 6;
-            _WeaPon = transform.GetChild(3).GetChild(1).GetComponent<cWeaPon>();
-            _Buff = transform.GetChild(6).GetComponent<Animator>();
+            _JumpPower = 12;
+            _Power = 10;
+              _Buff = transform.GetChild(6).GetComponent<Animator>();
 
             _Clip.Add(Resources.Load<AudioClip>("Sound/Jumping"));
             _Clip.Add(Resources.Load<AudioClip>("Sound/Hit_Player"));

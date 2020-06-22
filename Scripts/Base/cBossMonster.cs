@@ -48,24 +48,28 @@ public class cBossMonster : cMonsterBase
     //보스죽을때
     public override void Die(GameObject gameObject)
     {
+
         transform.parent.parent.GetComponent<cBossMap>().ReMoveBoss(gameObject);
         transform.parent.parent.GetComponent<cBossMap>()._isBox = true;
-            _DieEffect.Die(this.gameObject);
-        StartCoroutine(Gold());
-        _isDie = true;
+        _DieEffect.Die(this.gameObject);
+        for (float f = 0.1f; f < 2; f+=0.1f)
+        {
+            Invoke("Gold",f);
+ 
+        }
+            _isDie = true;
+        StopAllCoroutines();
 
     }
     //골드드랍
-    IEnumerator Gold()
+    void Gold()
     {
-        for (int i = 0; i < 20; ++i)
-        {
+       
             GameObject obj = Instantiate(_BigGold) as GameObject;
             obj.transform.position = this.transform.position;
             _GoldX = Random.Range(-100, 100);
             obj.GetComponent<Rigidbody2D>().AddForce(new Vector2(_GoldX, _GoldFower));
-            yield return new WaitForSeconds(0.1f);
-        }
+   
     }
 
 }

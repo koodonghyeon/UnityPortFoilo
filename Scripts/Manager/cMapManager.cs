@@ -79,6 +79,7 @@ public class cMapManager : MonoBehaviour
             if (wormPassage != null)
             {
                 wormPassage.mobCheck = true;
+       
             }
             _isMonster = false;
 

@@ -9,13 +9,15 @@ public class cStat : MonoBehaviour
     Text _JumpPower;
     Text _Defence;
     Text _MoveSpeed;
+    Text _Critical;
     void Awake()
     {
-       _Damage =transform.GetChild(5).GetComponent<Text>();
-       _CriticalDamage = transform.GetChild(6).GetComponent<Text>();
-       _JumpPower = transform.GetChild(7).GetComponent<Text>();
-       _Defence = transform.GetChild(8).GetComponent<Text>();
-       _MoveSpeed = transform.GetChild(9).GetComponent<Text>();
+       _Damage =transform.GetChild(6).GetComponent<Text>();
+       _CriticalDamage = transform.GetChild(7).GetComponent<Text>();
+       _JumpPower = transform.GetChild(8).GetComponent<Text>();
+       _Defence = transform.GetChild(9).GetComponent<Text>();
+       _MoveSpeed = transform.GetChild(10).GetComponent<Text>();
+        _Critical = transform.GetChild(11).GetComponent<Text>();
         this.gameObject.SetActive(false);
     }
 
@@ -26,5 +28,6 @@ public class cStat : MonoBehaviour
         _JumpPower.text = Player.GetInstance._JumpPower.ToString();
         _Defence.text = Player.GetInstance._Defense.ToString();
         _MoveSpeed.text = Player.GetInstance._MoveSpeed.ToString();
+        _Critical.text = Player.GetInstance._Critical.ToString();
     }
 }

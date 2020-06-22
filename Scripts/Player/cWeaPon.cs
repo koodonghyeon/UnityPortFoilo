@@ -28,7 +28,7 @@ public class cWeaPon : MonoBehaviour
     //스킬 사용했는지
     private bool _OneSkillCheck =true;
     //공격가능상태인지
-    private bool _isAttack=false;
+    public bool _isAttack=false;
     void Awake()
     {
         _AttackSound = GetComponent<AudioSource>();
@@ -67,6 +67,7 @@ public class cWeaPon : MonoBehaviour
             transform.localRotation = Quaternion.Euler(new Vector3(0, 0, -90));
             _AttackSound.clip = _Clip[0];
             _BulletText.text = "";
+      
         }
         else if (_NowWeaPon._Type == ItemType.Spear)
         {
@@ -74,7 +75,7 @@ public class cWeaPon : MonoBehaviour
             _SpriteRend.sortingOrder = 10;
             transform.localRotation = Quaternion.Euler(new Vector3(0, 0, -90));
             _AttackSound.clip = _Clip[1];
-
+  
             _BulletText.text = "";
         }
         else if (_NowWeaPon._Type == ItemType.Gun|| _NowWeaPon._Type ==ItemType.OneShot)
@@ -84,7 +85,7 @@ public class cWeaPon : MonoBehaviour
             transform.localRotation = Quaternion.Euler(new Vector3(0, 0,0));
             _AttackSound.clip = null;
             _BulletText.text = (((Longrange)_NowWeaPon)._MaxBullet - ((Longrange)_NowWeaPon)._CurBulletIndex).ToString() + "  /  " + ((Longrange)_NowWeaPon)._MaxBullet.ToString();
-
+  
         }
         _Ani.speed = _NowWeaPon._AttackSpeed;
         _SpriteRend.sprite = _NowWeaPon._ItemIcon;
@@ -159,7 +160,7 @@ public class cWeaPon : MonoBehaviour
  
          yield return new WaitForSeconds(((Longrange)_NowWeaPon)._Delay);
         Vector3 _mousePos = Input.mousePosition; //마우스 좌표 저장
-        Vector3 _oPosition = transform.position;
+        Vector3 _oPosition = this.transform.position;
         Vector3 target = Camera.main.ScreenToWorldPoint(_mousePos);
         Vector2 dir = (target - _oPosition);
         float rotateDegree = Mathf.Atan2(-dir.x, dir.y) * Mathf.Rad2Deg;

@@ -127,7 +127,11 @@ public class SkelWarrior : cShortMonster
         for (int i = 0; i <= 5; ++i)
         {
             int RandomIndex = Random.Range(1, 101);
-            if (RandomIndex >= 50 && RandomIndex <= 95)
+            if (RandomIndex < 50)
+            {
+                return;
+            }
+            else if (RandomIndex >= 50 && RandomIndex <= 95)
             {
                 GameObject obj = Instantiate(_SmallGold) as GameObject;
                 obj.transform.position = this.transform.position;

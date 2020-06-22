@@ -98,7 +98,11 @@ public class GiantBat : cLongLangeMonster
         for (int i = 0; i <= 5; ++i)
         {
             int RandomIndex = Random.Range(1, 101);
-            if (RandomIndex >= 35 && RandomIndex <= 80)
+            if (RandomIndex < 35)
+            {
+                return;
+            }
+            else if (RandomIndex >= 35 && RandomIndex <= 80)
             {
                 GameObject obj = Instantiate(_SmallGold) as GameObject;
                 obj.transform.position = this.transform.position;

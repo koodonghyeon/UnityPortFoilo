@@ -116,7 +116,11 @@ public class RadBat : cLongLangeMonster
         for (int i = 0; i <= 10; ++i)
         {
             int RandomIndex = Random.Range(1, 101);
-            if (RandomIndex >= 55 && RandomIndex <= 100)
+            if (RandomIndex < 55)
+            {
+                return;
+            }
+            else if (RandomIndex >= 55 && RandomIndex <= 100)
             {
                 GameObject obj = Instantiate(_SmallGold) as GameObject;
                 obj.transform.position = this.transform.position;

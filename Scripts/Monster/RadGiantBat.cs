@@ -80,22 +80,14 @@ public class RadGiantBat : cLongLangeMonster
         Bullet.transform.position = Dir;
 
         Bullet.transform.rotation = Quaternion.Euler(0f, 0f, _angle);
-        //Bullet._Start = true;
         Bullet.gameObject.SetActive(true);
         if (Count == 9)
         {
             cMonsterBullet.GetInstance.AllFire(4);
             cMonsterBullet.GetInstance.ActiveBullet(4);
         }
-        //StartCoroutine("ActiveBullet");
     }
-    //IEnumerator ActiveBullet()
-    //{
-    //    yield return new WaitForSeconds(3.0f);
-    //    cMonsterBullet.GetInstance.ActiveBullet(4);
-    //    //Bullet._Start = false;
-    //    //Bullet.gameObject.SetActive(false);
-    //}
+
     public override void MonsterHIT(int dam, bool isCritical)
     {
         base.MonsterHIT(dam, isCritical);
@@ -106,7 +98,11 @@ public class RadGiantBat : cLongLangeMonster
         for (int i = 0; i <= 10; ++i)
         {
             int RandomIndex = Random.Range(1, 101);
-            if (RandomIndex >= 35 && RandomIndex <= 80)
+            if (RandomIndex < 35)
+            {
+                return;
+            }
+            else if (RandomIndex >= 35 && RandomIndex <= 80)
             {
                 GameObject obj = Instantiate(_SmallGold) as GameObject;
                 obj.transform.position = this.transform.position;

@@ -62,10 +62,19 @@ public class SkelBoss : cBossMonster
     {
         if (_isIntro)
         {
-            if (!_isDie)
+            if (_currnetHP <= 0)
             {
-                if (!_isAttack)
+                if (!_isDie)
                 {
+                    _isDie = true;
+                    _Anim.SetTrigger("Die");
+                    Die(this.gameObject);
+                }
+            }
+
+            if (!_isAttack)
+                {
+                  
                     if (state == State.Laser)
                     {
                         _RandomIndex = Random.Range(0, 2);
@@ -89,30 +98,23 @@ public class SkelBoss : cBossMonster
                     }
                 }
 
-
+            if (!_isDie)
+            {
                 if (skellBossLasers[0]._Count > 3 || skellBossLasers[1]._Count > 3)
                 {
-                    if (state != State.Normal)
-                    {
-                        StartCoroutine("SkellBossState");
-                        skellBossLasers[0]._Count = 0;
-                        skellBossLasers[1]._Count = 0;
-                    }
-                    state = State.Normal;
-                }
-                else if (_currnetHP <= 0)
-                {
-                    if (!_isDie)
-                    {
-                        Die(this.gameObject);
-                        _isDie = true;
-                    }
-                }
-                if (Input.GetKeyDown(KeyCode.O))
-                {
-                    _currnetHP -= 10;
+                   
+                        if (state != State.Normal)
+                        {
+                            StartCoroutine("SkellBossState");
+                            skellBossLasers[0]._Count = 0;
+                            skellBossLasers[1]._Count = 0;
+                        }
+                        state = State.Normal;
                 }
             }
+
+               
+    
         }
     }
     //보스인트로 재생끝나면 보스패턴시작
@@ -162,6 +164,8 @@ public class SkelBoss : cBossMonster
         float _BulletAngle = 0;
         for (int j = 0; j < 30; ++j)
         {
+            if (_isDie)
+                break;
             for (int i = 0; i < 4; ++i)
             {
                 Vector3 dirVec = _BossBack.transform.position;
@@ -202,8 +206,9 @@ public class SkelBoss : cBossMonster
         _BossSwordPoll[_CurBossSwordIndex].gameObject.SetActive(true);
         _BossSwordPoll[_CurBossSwordIndex]._Start = true;
 
-        yield return new WaitForSeconds(0.2f);
-     
+        yield return new WaitForSeconds(0.4f);
+        if (_isDie)
+            StopCoroutine(FireSword(Dir));
        if (_CurBossSwordIndex >= _MaxBossSword - 1)
         {
             _SwordX = 0;

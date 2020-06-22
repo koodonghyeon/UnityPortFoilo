@@ -11,10 +11,11 @@ public class cStartPoint : MonoBehaviour
     
     void Awake()
     {
+        cCameramanager.GetInstance.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, 
+            -10);
         _CursorTexture = Resources.Load<Texture2D>("UI/ShootingCursor1");
         _ClickTexture = Resources.Load<Texture2D>("UI/ShootingCursor2");
         Player.GetInstance.gameObject.SetActive(true);
-        cCameramanager.GetInstance.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, cCameramanager.GetInstance.transform.position.z);
         Player.GetInstance._DashCount = 3;
         Player.GetInstance._Dash.AllTrue();
         cUIManager.GetInstance.gameObject.SetActive(true);

@@ -135,7 +135,11 @@ public class Minotaurs : cShortMonster
         for (int i = 0; i <= 10; ++i)
         {
             int RandomIndex = Random.Range(1, 101);
-            if (RandomIndex >= 30 && RandomIndex <= 70)
+          if(RandomIndex < 30)
+            {
+                return;
+            }
+            else if (RandomIndex >= 30 && RandomIndex <= 70)
             {
                 GameObject obj = Instantiate(_SmallGold) as GameObject;
                 obj.transform.position = this.transform.position;

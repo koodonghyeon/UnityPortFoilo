@@ -92,7 +92,11 @@ public class Banshee : cLongLangeMonster
         for (int i = 0; i <= 10; ++i)
         {
             int RandomIndex = Random.Range(1, 101);
-            if (RandomIndex >= 40 && RandomIndex <= 90)
+            if (RandomIndex < 40)
+            {
+                return;
+            }
+            else if (RandomIndex >= 40 && RandomIndex <= 90)
             {
                 GameObject obj = Instantiate(_SmallGold) as GameObject;
                 obj.transform.position = this.transform.position;

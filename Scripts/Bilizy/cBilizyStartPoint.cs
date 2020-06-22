@@ -23,7 +23,7 @@ public class cBilizyStartPoint : MonoBehaviour
         cGameManager.GetInstance.SetBackGruond(BackGroundSound.Bilizy);
         cGameManager.GetInstance.SetCursor(_CursorTexture, _ClickTexture);
         cCameramanager.GetInstance.SetTarget(Player.GetInstance.gameObject, 5.0f);
-      
+        Player.GetInstance._Ani.SetTrigger("Idle");
         cInventory.GetInstance.InventoryReset();
         for(int i=0; i < 10; ++i)
         {

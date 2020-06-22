@@ -121,7 +121,7 @@ public class cGameManager : cSingleton<cGameManager>
             _BackGround.loop = false;
             _BackGround.clip = _BackGroundClip[4];
             _BackGround.Play();
-            Player.GetInstance.transform.rotation = Quaternion.Euler(0, 0, 90);
+                Player.GetInstance._Ani.SetTrigger("DIe");
             _Dead.SetActive(true);
                 _isDie = true;
             }

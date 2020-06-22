@@ -92,6 +92,7 @@ public class cInventorySlot : MonoBehaviour,IDragHandler, IPointerExitHandler,IE
         if (transform.childCount > 0)
             transform.GetChild(0).SetParent(cInventory.GetInstance._DraggingItem);
         cInventory.GetInstance._DraggingItem.GetChild(0).position = eventData.position;
+        _Panel.gameObject.SetActive(false);
     }
     //마우스가 슬롯위에있을때 아이템이있으면 판넬로 설명창 뛰움
     public void OnPointerEnter(PointerEventData eventData)

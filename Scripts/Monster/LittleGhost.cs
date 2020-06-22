@@ -97,7 +97,11 @@ public class LittleGhost : cShortMonster
         for (int i = 0; i <= 3; ++i)
         {
             int RandomIndex = Random.Range(1, 101);
-            if (RandomIndex >= 60 && RandomIndex <= 100)
+            if (RandomIndex < 60)
+            {
+                return;
+            }
+            else if (RandomIndex >= 60 && RandomIndex <= 100)
             {
                 GameObject obj = Instantiate(_SmallGold) as GameObject;
                 obj.transform.position = this.transform.position;
