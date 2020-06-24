@@ -102,6 +102,7 @@ public class Player : cCharacter
             _CriticalDamage = 50;
             _JumpPower = 12;
             _Power = 10;
+           
               _Buff = transform.GetChild(6).GetComponent<Animator>();
 
             _Clip.Add(Resources.Load<AudioClip>("Sound/Jumping"));
@@ -148,6 +149,10 @@ public class Player : cCharacter
             {
                 if (_state != State.Die)
                 {
+                    if (Input.GetKeyDown(KeyCode.O))
+                    {
+                        _health.MyCurrentValue -= 20;
+                    }
                     //이동
                     _horizontalMove = Input.GetAxisRaw("Horizontal");
                     //점프상태

@@ -22,10 +22,12 @@ public class cGameStart : MonoBehaviour
             _DunGeonAnim.SetTrigger("Open");
 
             cUIManager.GetInstance.gameObject.SetActive(false);
+           
             Player.GetInstance._Ani.StopPlayback();
             Player.GetInstance._isMoveMap = true;
             Player.GetInstance._Rigidbody.velocity = Vector3.zero;
-          
+
+
         }
     }
 

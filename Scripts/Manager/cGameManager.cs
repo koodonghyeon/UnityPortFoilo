@@ -30,7 +30,7 @@ public class cGameManager : cSingleton<cGameManager>
     public cStat _Stat;
     bool _isDie=false;
     //골드
-    private static float _Gold = 0;
+    private static float _Gold = 500;
    public float Gold { set{ _Gold = value; } get { return _Gold; }}
 
     //골드 딜리게이트
@@ -200,8 +200,7 @@ public class cGameManager : cSingleton<cGameManager>
     //죽으면 플레이어 리셋
     public void PlayerReset()
     {
-        Player.GetInstance._health.MyCurrentValue = 80;
-        Player.GetInstance._health._MaxValue = 80;
+        Player.GetInstance._health.Initialize(80, 80);
         Player.GetInstance._Power = 0;
         Player.GetInstance._MoveSpeed = 5.0f;
         Player.GetInstance._Defense = 0;

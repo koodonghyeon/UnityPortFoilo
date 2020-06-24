@@ -25,7 +25,8 @@ public class cBilizyStartPoint : MonoBehaviour
         cCameramanager.GetInstance.SetTarget(Player.GetInstance.gameObject, 5.0f);
         Player.GetInstance._Ani.SetTrigger("Idle");
         cInventory.GetInstance.InventoryReset();
-        for(int i=0; i < 10; ++i)
+        Player.GetInstance._Food._MyCurrentValue = 0;
+        for (int i=0; i < 10; ++i)
         {
             cInventory.GetInstance.AddItem(cDataBaseManager.GetInstance._ItemList[i]);
         }
